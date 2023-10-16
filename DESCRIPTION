@@ -1,6 +1,6 @@
-Package: clusterPower
-Version: 0.7.0
-Date: 2021-01-27	
+Package: clusterPowerDelfi
+Version: 0.7.1
+Date: 2023-10-16	
 Title: Power Calculations for Cluster-Randomized and Cluster-Randomized Crossover Trials
 Maintainer: Ken Kleinman <ken.kleinman@gmail.com>
 Authors@R: c(
@@ -45,5 +45,5 @@ RdMacros:
     mathjaxr
 VignetteBuilder: knitr
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.2
 Config/testthat/edition: 3

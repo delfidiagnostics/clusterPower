@@ -1,10 +1,6 @@
-clusterPower
+clusterPowerDelfi
 ============
 
-[![](http://cranlogs.r-pkg.org/badges/clusterPower)](https://CRAN.R-project.org/package=clusterPower)
-[![Build Status](https://travis-ci.org/Kenkleinman/clusterPower.svg?branch=master)](https://travis-ci.org/Kenkleinman/clusterPower)
+This is a form from [clusterPower](https://github.com/Kenkleinman/clusterPower/), which seems to be inactive. The package was archived in CRAN due to it failing CRAN tests, so forked this repo to apply [this fix](https://github.com/Kenkleinman/clusterPower/pull/226) to the bug we encountered.
 
-
-clusterPower: power and sample size calculations for cluster-randomized trials, using both closed form and Monte Carlo methods
-
-To get a version with a working shiny app, please download this file: https://github.com/Kenkleinman/clusterPower/releases/download/v1.0-beta/clusterPower_0.6.200.tar.gz and install it as a package in R.
+We will rename this package from {clusterPower} to {clusterPowerDelfi} in order to avoid namespace clashes. It will be pushed to Artifactory from where Delfi users can install this R package.

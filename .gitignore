@@ -1,9 +1,14 @@
+.DS_Store
 inst/doc
 src/*.o
 src/*.so
 src/*.dll
 doc
 Meta
+
+# renv
+.Rprofile
+renv.lock
 
 # History files
 .Rhistory

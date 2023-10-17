@@ -6,10 +6,6 @@ src/*.dll
 doc
 Meta
 
-# renv
-.Rprofile
-renv.lock
-
 # History files
 .Rhistory
 .Rapp.history

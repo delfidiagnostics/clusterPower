@@ -1,4 +1,4 @@
-gPackage: clusterPowerDelfi
+Package: clusterPower
 Version: 0.7.1
 Date: 2023-10-16	
 Title: Power Calculations for Cluster-Randomized and Cluster-Randomized Crossover Trials
@@ -12,7 +12,8 @@ Authors@R: c(
   person("Daniel", "Obeng", email = "dobeng@gmail.com", rol = c("ctb"))
   )
 License: GPL (>= 2)
-Imports: lme4 (>= 1.0),
+Imports:
+    lme4 (>= 1.0),
     progress (>= 1.1.2),
     dplyr(>= 0.7.5),
     tidyr (>= 0.8.1),

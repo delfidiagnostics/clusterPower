@@ -11,7 +11,7 @@ req_pkgs <- c(
   "yaml"
 )
 
-pak::pkg_install(req_pkgs, upgrade = FALSE)
+pak::pak(req_pkgs)
 
 # Setup ------------------------------------------------------------------------
 read_description <- yaml::read_yaml("DESCRIPTION")

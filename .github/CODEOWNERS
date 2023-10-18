@@ -1,0 +1,17 @@
+# Each line is a file pattern followed by one or more owners.
+# 
+# See examples and details:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global ---------------------------------------------------
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence, they will
+# be requested for review when someone opens a pull request.
+* @payam-delfi
+* @sbanville-delfi
+
+# Specific directories ------------------------------------
+# R/ @example-user-1 @example-user-2
+
+# Specific file types -------------------------------------
+# *.py @example-user-1 @example-user-2

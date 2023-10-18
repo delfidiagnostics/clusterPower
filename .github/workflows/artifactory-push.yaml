@@ -1,0 +1,77 @@
+on:
+  push:
+    branches: [main, master]
+    paths:
+     - 'DESCRIPTION'
+name: Upload to Artifactory
+
+env:
+  AWS_REGION: us-east-1
+
+jobs:
+
+  setup-r-environment:
+    name: Setup R Environment
+    runs-on: ubuntu-latest
+    container: rocker/verse:4.2.2
+
+    steps:
+
+      - name: Install Required Ubuntu Packages
+        run: |
+          apt-get update -qq && apt-get -y --no-install-recommends install \
+          wget \
+          libcurl4-openssl-dev \
+          gdebi-core \
+          libbz2-dev \
+          xzdec \
+          tree
+
+      - name: Repo Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Setup R Dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 2
+
+      - name: Create and Populate .Renviron File
+        run: |
+          echo ARTIFACTORY_PUBLISHER_USER="${{ secrets.ARTIFACTORY_PUBLISHER_USER }}" >> ~/.Renviron
+          echo ARTIFACTORY_PUBLISHER_PASS="${{ secrets.ARTIFACTORY_PUBLISHER_PASS }}" >> ~/.Renviron
+
+      - name: Build Packages
+        run: Rscript .github/scripts/01-r-pkg-build.R
+
+      - name: Create Artifactory Paths
+        run: Rscript .github/scripts/02-r-pkg-paths.R
+
+      - name: Push Package to Artifactory
+        run: |
+          chmod +x .github/scripts/03-r-pkg-push.sh
+          ./.github/scripts/03-r-pkg-push.sh
+
+      - name: Clean Up Residual Files
+        run: Rscript .github/scripts/04-r-pkg-cleanup.R
+
+      - name: Set Tag Output
+        id: set-tag
+        run: |
+          echo "tag_name=$(cat DESCRIPTION | grep Version | awk '{print $2}')" >> $GITHUB_OUTPUT
+      
+      - name: Create Tag
+        uses: actions/github-script@v3
+        env:
+          TAG: ${{ steps.set-tag.outputs.tag_name }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+             ref: "refs/tags/${{ steps.set-tag.outputs.tag_name }}",
+              sha: context.sha
+            })

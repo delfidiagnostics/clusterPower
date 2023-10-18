@@ -35,11 +35,6 @@ jobs:
       - name: Setup renv
         uses: r-lib/actions/setup-renv@v2
 
-      - name: Setup R Dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          cache-version: 2
-
       - name: Create and Populate .Renviron File
         run: |
           echo ARTIFACTORY_PUBLISHER_USER="${{ secrets.ARTIFACTORY_PUBLISHER_USER }}" >> ~/.Renviron

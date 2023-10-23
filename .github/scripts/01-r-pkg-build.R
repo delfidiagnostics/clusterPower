@@ -1,5 +1,5 @@
 if (!requireNamespace("pak", quietly = TRUE)) {
-  install.packages("pak")
+  install.packages("pak", repos = "https://cran.rstudio.com/")
 }
 
 req_pkgs <- c(

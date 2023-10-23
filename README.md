@@ -1,4 +1,4 @@
-clusterPowerDelfi
+clusterPower
 ============
 
 > [!IMPORTANT]  
@@ -8,10 +8,14 @@ This is a form from [clusterPower](https://github.com/Kenkleinman/clusterPower/)
 
 ## Installation
 
+**Github**
+
 ```r
-devtools::install_git(
-  url = "git@github.com:delfidiagnostics/clusterPowerDelfi.git",
-  force = TRUE,
-  upgrade = FALSE
-)
+devtools::install_git("git@github.com:delfidiagnostics/clusterPowerDelfi.git")
+```
+
+**Artifactory**
+
+```r
+install.packages("clusterPower", type = "source", repos = getOption("repos")[["ds-cran"]])
 ```

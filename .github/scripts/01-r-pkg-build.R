@@ -1,6 +1,13 @@
-if (!requireNamespace("pak", quietly = TRUE)) {
-  install.packages("pak", repos = "https://cran.rstudio.com/")
-}
+stream <- "devel" # "stable", "rc", or "devel"
+path <- sprintf(
+  "https://r-lib.github.io/p/pak/%s/%s/%s/%s",
+  stream,
+  .Platform$pkgType,
+  R.Version()$os,
+  R.Version()$arch
+)
+
+install.packages("pak", repos = path)
 
 req_pkgs <- c(
   "devtools",
